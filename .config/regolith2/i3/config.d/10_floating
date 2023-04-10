@@ -1,0 +1,2 @@
+for_window [class="KeePassXC"] floating enable
+for_window [class="Steam" title="^Steam Guard .*"] floating enable

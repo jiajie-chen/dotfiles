@@ -1,0 +1,15 @@
+! base theme
+regolith.look.path: /usr/share/regolith-look/nord
+regolith.wallpaper.file: /home/jiajie-chen/Pictures/Wallpapers/pastel-blocks-tiles_dim-80.png
+
+! i3
+i3-wm.bar.trayoutput: primary
+i3-wm.gaps.smart: off
+i3xrocks.label.cpu: 
+i3xrocks.action.cpu-usage: true
+
+! gtk/gnome
+gnome.icon.theme: Qogir-dark
+gtk.icon_theme_name: Qogir-dark
+Xcursor.size: 16
+Xcursor.theme: Qogir-manjaro

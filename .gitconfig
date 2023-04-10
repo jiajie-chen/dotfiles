@@ -1,0 +1,25 @@
+[user]
+  name = JJ Chen
+  email = jiajiechen95@gmail.com
+	signingkey = 0A33009DA6EC6DA3
+[credential]
+  helper = /home/jiajie-chen/.dotnet/tools/git-credential-manager
+	credentialStore = secretservice
+[core]
+  editor = code -n --wait
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[alias]
+  tree = log --graph --decorate --pretty=oneline --abbrev-commit
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
