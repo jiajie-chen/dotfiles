@@ -5,7 +5,7 @@ format = """
 [](fg:sys-bg)[$os$username ](bg:sys-bg)[](fg:sys-bg)\
 [ $directory ](fg:dir-bg inverted)[](fg:dir-bg)\
 (\
-[ $git_branch(  $git_status( $git_state)) ](fg:git-bg inverted)\
+[ $git_branch(  $git_status(  $git_state)) ](fg:git-bg inverted)\
 [](fg:git-bg)\
 )(\
 [( $python)( $nodejs)( $rust) ](fg:lang-bg inverted)\
