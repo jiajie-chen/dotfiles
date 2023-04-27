@@ -1,36 +1,61 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+##region General
+
+##region Format Default
+# format = """
+# (\
+# [](fg:alert-primary)\
+# [$status ](bold bg:alert-primary fg:alert-secondary)\
+# [](bold fg:alert-primary inverted)\
+# )\
+# [](fg:sys-primary)[$os( $username) ](bg:sys-primary)[](fg:sys-primary)\
+# [ $directory ](fg:dir-primary inverted)[](fg:dir-primary)\
+# (\
+# [ $git_branch(  $git_status(  $git_state)) ](fg:git-primary inverted)\
+# [](fg:git-primary)\
+# )(\
+# [( $python)( $nodejs)( $rust) ](fg:lang-primary inverted)\
+# [](fg:lang-primary)\
+# )(\
+# [ $docker_context ](fg:docker-primary inverted)[](fg:docker-primary)\
+# )\
+# \n$character \
+# """
+##endregion
+
+##region Format Minimal
 format = """
-[](fg:alert-bg)[$status ](bold bg:alert-bg fg:alert-dim)[](bold fg:alert-bg inverted)\
-[](fg:sys-bg)[$os$username ](bg:sys-bg)[](fg:sys-bg)\
-[ $directory ](fg:dir-bg inverted)[](fg:dir-bg)\
-(\
-[ $git_branch(  $git_status(  $git_state)) ](fg:git-bg inverted)\
-[](fg:git-bg)\
-)(\
-[( $python)( $nodejs)( $rust) ](fg:lang-bg inverted)\
-[](fg:lang-bg)\
-)(\
-[ $docker_context ](fg:docker-bg inverted)[](fg:docker-bg)\
-)\
+([┆ $status ](bold fg:alert-primary))\
+[  $os( $username) ](fg:sys-primary) [ $directory ](bold fg:dir-primary)\
+( [ $git_branch( $git_status( $git_state)) ](fg:git-primary))\
+( [( $python)( $nodejs)( $rust) ](fg:lang-primary) )\
+([ $docker_context ](fg:docker-primary) )\
 \n$character \
 """
+##endregion
 
 # continuation_prompt = '$fill'
 command_timeout = 1000
-# Disable the blank line at the start of the prompt
-# add_newline = false
+# Blank line at the start of the prompt
+add_newline = true
+
+##endregion
+##region Palettes
 
 palette = 'pastel'
 [palettes.pastel]
-sys-bg = '#9A348E'
-dir-bg = '#DA627D'
-git-bg = '#FCA17D'
-lang-bg = '#86BBD8'
-lang-dim = '#529EC7'
-docker-bg = '#06969A'
-alert-bg = 'red'
-alert-dim = "#FF0000"
+sys-primary = '#9A348E'
+dir-primary = '#DA627D'
+git-primary = '#FCA17D'
+lang-primary = '#86BBD8'
+lang-secondary = '#529EC7'
+docker-primary = '#06969A'
+alert-primary = 'red'
+alert-secondary = "#FF0000"
+
+##endregion
+##region System
 
 [fill]
 disabled = true
@@ -47,28 +72,26 @@ disabled = false
 symbol = " $int"
 success_symbol = ""
 map_symbol = false
-format = "$symbol$maybe_int"
+format = "$symbol"
 
 [character]
 disabled = false
 format = "$symbol"
 success_symbol = "[](bold fg:white)"
-error_symbol = "[](bold fg:alert-bg)"
+error_symbol = "[](bold fg:alert-primary)"
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
 [username]
 disabled = false
 show_always = false
-style_user = "bg:sys-bg"
-style_root = "fg:alert-bg bg:sys-bg"
+style_user = "bg:sys-primary"
+style_root = "fg:alert-primary bg:sys-primary"
 format = '[$user]($style)'
 
-# An alternative to the username module which displays a symbol that
-# represents the current operating system
 [os]
-disabled = false # Disabled by default
-format = "$symbol"
+disabled = false
+format = "$symbol( $version)"
 [os.symbols]
 Alpine = ""
 Amazon = ""
@@ -126,6 +149,9 @@ truncate_to_repo = true
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important " = ""
 
+##endregion
+##region Git
+
 [git_branch]
 disabled = false
 symbol = ""
@@ -133,31 +159,32 @@ format = '$symbol $branch'
 
 [git_status]
 disabled = false
-conflicted = "ﰸ"
-ahead = ""
-behind = ""
-diverged = "ﬕ"
-untracked = ""
-stashed = ""
-staged = ""
-renamed = "﬍"
-deleted = ""
-modified = ""
+conflicted = " ﰸ"
+ahead = " "
+behind = " "
+diverged = " ﬕ"
+untracked = " "
+stashed = " "
+staged = " "
+renamed = " ﬍"
+deleted = " "
+modified = " "
 up_to_date = ""
-format = '$all_status$ahead_behind'
+format = '(┆$all_status$ahead_behind)'
 
 [git_state]
 disabled = false
-rebase = "金"
-merge = "ﰂ"
-revert = "ﯰ"
-cherry_pick = ""
-bisect = ""
-am = ""
-am_or_rebase = "ﰮ"
-format = "$state( $progress_current/$progress_total)"
+rebase = " 金"
+merge = " ﰂ"
+revert = " ﯰ"
+cherry_pick = " "
+bisect = " "
+am = " "
+am_or_rebase = " ﰮ"
+format = "(┆$state( $progress_current/$progress_total))"
 
-## Languages
+##endregion
+##region Environment
 
 [c]
 disabled = true
@@ -237,3 +264,4 @@ disabled = false
 symbol = ""
 format = '$symbol $context $path'
 
+##endregion
