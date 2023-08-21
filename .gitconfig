@@ -1,10 +1,11 @@
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
 [user]
   name = JJ Chen
-  email = jiajiechen95@gmail.com
-	signingkey = 0A33009DA6EC6DA3
-[credential]
-  helper = /home/jiajie-chen/.dotnet/tools/git-credential-manager
-	credentialStore = secretservice
+	signingkey = 0C70AC8283A138AC
 [core]
   editor = code -n --wait
 [diff]
