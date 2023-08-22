@@ -9,15 +9,13 @@ eval "$(starship init zsh)"
 # endregion starship
 
 # region zsh-autosuggestions
-source "$(brew 
---prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # endregion zsh-autosuggestions
 
 # region brew-autocomplete
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
   autoload -Uz compinit
   compinit
 fi
