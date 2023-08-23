@@ -1,14 +1,21 @@
 #!/bin/zsh
 
-if [ -f ~/.bash_profile ]; then
-    source ~/.bash_profile
+# region zprofile
+if [ -f ~/.zprofile ]
+then
+  source ~/.zprofile
 fi
+# endregion zprofile
 
 # region starship
-eval "$(starship init zsh)"
+if type starship &>/dev/null
+then
+  eval "$(starship init zsh)"
+fi
 # endregion starship
 
 # region zsh-autosuggestions
+# TODO: if/then
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # endregion zsh-autosuggestions
 
@@ -24,3 +31,17 @@ fi
 # region gpg
 export GPG_TTY=$(tty)
 # endregion gpg
+
+# region direnv
+if type direnv &>/dev/null
+then
+  eval "$(direnv hook zsh)"
+fi
+# endregion direnv
+
+# region lsd
+if type lsd &>/dev/null
+then
+  alias ls='lsd'
+fi
+# endregion lsd

@@ -43,7 +43,7 @@ add_newline = true
 ##endregion
 ##region Palettes
 
-palette = 'pastel'
+palette = 'dracula'
 [palettes.pastel]
 sys-primary = '#9A348E'
 dir-primary = '#DA627D'
@@ -53,6 +53,15 @@ lang-secondary = '#529EC7'
 docker-primary = '#06969A'
 alert-primary = 'red'
 alert-secondary = "#FF0000"
+[palettes.dracula]
+sys-primary = '#FF79C6'
+dir-primary = '#BD93F9'
+git-primary = '#FFB86C'
+lang-primary = '#8BE9FD'
+lang-secondary = '#282A36'
+docker-primary = '#8BE9FD'
+alert-primary = '#FF5555'
+alert-secondary = "#282A36"
 
 ##endregion
 ##region System
@@ -69,8 +78,8 @@ format = ' $time'
 
 [status]
 disabled = false
-symbol = " $int"
-success_symbol = ""
+symbol = "󰋔 $int"
+success_symbol = "󰣐"
 map_symbol = false
 format = "$symbol"
 
@@ -104,10 +113,7 @@ Emscripten = ""
 EndeavourOS = ""
 Fedora = ""
 FreeBSD = ""
-Garuda = "﯑"
 Gentoo = ""
-HardenedBSD = "ﲊ"
-Illumos = ""
 Linux = ""
 Macos = ""
 Manjaro = ""
@@ -116,19 +122,18 @@ MidnightBSD = ""
 Mint = ""
 NetBSD = ""
 NixOS = ""
-OpenBSD = ""
+OpenBSD = ""
 openSUSE = ""
-OracleLinux = ""
 Pop = ""
 Raspbian = ""
 Redhat = ""
 RedHatEnterprise = ""
 Redox = ""
-Solus = "ﴱ"
+Solus = ""
 SUSE = ""
 Ubuntu = ""
 Unknown = ""
-Windows = ""
+Windows = "󰖳"
 
 [directory]
 disabled = false
@@ -139,7 +144,7 @@ truncate_to_repo = true
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
-"Documents" = ""
+"Documents" = "󱔗"
 "Downloads" = ""
 "Music" = ""
 "Pictures" = ""
@@ -154,33 +159,33 @@ truncate_to_repo = true
 
 [git_branch]
 disabled = false
-symbol = ""
+symbol = ""
 format = '$symbol $branch'
 
 [git_status]
 disabled = false
 conflicted = " ﰸ"
-ahead = " "
-behind = " "
-diverged = " ﬕ"
+ahead = " "
+behind = " "
+diverged = " 󱞫"
 untracked = " "
-stashed = " "
-staged = " "
-renamed = " ﬍"
-deleted = " "
-modified = " "
-up_to_date = ""
+stashed = " "
+staged = " "
+renamed = " "
+deleted = " "
+modified = " "
+up_to_date = " "
 format = '(┆$all_status$ahead_behind)'
 
 [git_state]
 disabled = false
-rebase = " 金"
-merge = " ﰂ"
-revert = " ﯰ"
-cherry_pick = " "
-bisect = " "
-am = " "
-am_or_rebase = " ﰮ"
+rebase = " "
+merge = " "
+revert = " "
+cherry_pick = " "
+bisect = " "
+am = " "
+am_or_rebase = " "
 format = "(┆$state( $progress_current/$progress_total))"
 
 ##endregion
@@ -236,7 +241,7 @@ format = '$symbol( $version)'
 
 [nim]
 disabled = true
-symbol = ""
+symbol = ""
 version_format = '${major}.${minor}'
 format = '$symbol( $version)'
 
@@ -254,10 +259,11 @@ format = '$symbol( $version)'
 
 [python]
 disabled = false
-symbol = ""
+symbol = "󰌠"
 version_format = '${major}.${minor}'
 format = '$symbol( $version)(/$virtualenv)'
-pyenv_version_name = true
+pyenv_version_name = false
+python_binary =	['python3', 'python', 'python2']
 
 [docker_context]
 disabled = false
