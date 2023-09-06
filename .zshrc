@@ -45,3 +45,7 @@ then
   alias ls='lsd'
 fi
 # endregion lsd
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/jchen/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

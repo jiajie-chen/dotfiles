@@ -1,11 +1,16 @@
+[user]
+  name = JJ Chen
+  email = 2905873+jiajie-chen@users.noreply.github.com
+	signingkey = 0C70AC8283A138AC
+[includeIf "hasconfig:remote.*.url:https://github.huit.harvard.edu/**"]
+	path = ~/.gitconfig.huit
+
 [credential]
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
-[user]
-  name = JJ Chen
-	signingkey = 0C70AC8283A138AC
+
 [core]
   editor = code -n --wait
 [diff]
