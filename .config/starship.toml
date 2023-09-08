@@ -30,7 +30,7 @@ format = """
 [  $os( $username) ](fg:sys-primary) [ $directory ](bold fg:dir-primary)\
 ( [ $git_branch( $git_status( $git_state)) ](fg:git-primary))\
 ( [( $python)( $nodejs)( $rust) ](fg:lang-primary) )\
-([ $docker_context ](fg:docker-primary) )\
+( [ $docker_context ](fg:docker-primary) )\
 \n$character \
 """
 ##endregion
@@ -268,6 +268,6 @@ python_binary =	['python3', 'python', 'python2']
 [docker_context]
 disabled = false
 symbol = ""
-format = '$symbol $context $path'
+format = '$symbol $context( $path)'
 
 ##endregion

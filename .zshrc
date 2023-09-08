@@ -17,6 +17,8 @@ fi
 # region zsh-autosuggestions
 # TODO: if/then
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '^[[Z' autosuggest-accept
 # endregion zsh-autosuggestions
 
 # region brew-autocomplete
@@ -46,6 +48,6 @@ then
 fi
 # endregion lsd
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+# region Rancher Desktop
 export PATH="/Users/jchen/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+# endregion Rancher Desktop
