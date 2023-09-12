@@ -148,9 +148,11 @@ alt + shift - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 alt - left  : yabai -m window --focus west || \
               yabai -m display --focus west
 alt - down  : yabai -m window --focus stack.prev || \
+              yabai -m window --focus stack.last || \
               yabai -m window --focus south || \
               yabai -m display --focus south
 alt - up    : yabai -m window --focus stack.next || \
+              yabai -m window --focus stack.first || \
               yabai -m window --focus north || \
               yabai -m display --focus north
 alt - right : yabai -m window --focus east || \
