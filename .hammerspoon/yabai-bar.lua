@@ -17,24 +17,25 @@ function YabaiBar:new(exec, showEmptySpaces, showInactiveSpaces)
         showInactiveSpaces = showInactiveSpaces ~= false,
         focusedStyle = {
             font = hs.styledtext.defaultFonts.menuBar,
-            color = hs.drawing.color.hammerspoon.osx_green
+            underlineStyle = hs.styledtext.lineStyles.thick
         },
         visibleStyle = {
             font = hs.styledtext.defaultFonts.menuBar,
-            color = hs.drawing.color.x11.silver
+            underlineStyle = hs.styledtext.lineStyles.single
         },
         hasWindowsStyle = {
             font = hs.styledtext.defaultFonts.menuBar,
-            color = hs.drawing.color.x11.lightgray
+            underlineStyle = (
+                hs.styledtext.lineStyles.single
+                | hs.styledtext.linePatterns.dot
+            )
         },
         noWindowsStyle = {
-            font = hs.styledtext.defaultFonts.menuBar,
-            color = hs.drawing.color.x11.darkgray
+            font = hs.styledtext.defaultFonts.menuBar
         },
         separator = hs.styledtext.new(" / ", {
-            font = hs.styledtext.defaultFonts.menuBar,
-            color = hs.drawing.color.x11.silver
-        }) -- two spaces
+            font = hs.styledtext.defaultFonts.menuBar
+        })
     }
 
     self.__index = self
