@@ -15,23 +15,31 @@ function YabaiBar:new(exec, showEmptySpaces, showInactiveSpaces)
         -- https://www.reddit.com/r/lua/comments/b2fekt/function_with_optional_boolean_parameter/eisq0y3/
         showEmptySpaces = showEmptySpaces ~= false,
         showInactiveSpaces = showInactiveSpaces ~= false,
+        -- https://www.hammerspoon.org/docs/hs.styledtext.html
+        stringFormat = " %i ",
         focusedStyle = {
             font = hs.styledtext.defaultFonts.menuBar,
-            underlineStyle = hs.styledtext.lineStyles.thick
+            underlineStyle = (
+                hs.styledtext.lineStyles.thick
+                | hs.styledtext.lineAppliesTo.line
+            )
         },
         visibleStyle = {
             font = hs.styledtext.defaultFonts.menuBar,
-            underlineStyle = hs.styledtext.lineStyles.single
-        },
-        hasWindowsStyle = {
-            font = hs.styledtext.defaultFonts.menuBar,
             underlineStyle = (
                 hs.styledtext.lineStyles.single
-                | hs.styledtext.linePatterns.dot
+                | hs.styledtext.lineAppliesTo.line
             )
         },
-        noWindowsStyle = {
+        hasWindowsStyle = {
             font = hs.styledtext.defaultFonts.menuBar
+        },
+        noWindowsStyle = {
+            font = hs.styledtext.defaultFonts.menuBar,
+            strikethroughStyle = (
+                hs.styledtext.lineStyles.single
+                | hs.styledtext.lineAppliesTo.line
+            )
         },
         separator = hs.styledtext.new(" / ", {
             font = hs.styledtext.defaultFonts.menuBar
@@ -58,16 +66,36 @@ function YabaiBar:update()
         for i = 1, #spaces do
             if spaces[i]["has-focus"] then
                 -- Focused
-                table.insert(styledNums, hs.styledtext.new(i, self.focusedStyle))
+                table.insert(
+                    styledNums,
+                    hs.styledtext.new(
+                        string.format(self.stringFormat, i), self.focusedStyle
+                    )
+                )
             elseif spaces[i]["is-visible"] then
                 -- Not focused, but visible
-                table.insert(styledNums, hs.styledtext.new(i, self.visibleStyle))
+                table.insert(
+                    styledNums,
+                    hs.styledtext.new(
+                        string.format(self.stringFormat, i), self.visibleStyle
+                    )
+                )
             elseif spaces[i]["first-window"] ~= 0 and self.showInactiveSpaces then
                 -- Not visible, but with windows showing
-                table.insert(styledNums, hs.styledtext.new(i, self.hasWindowsStyle))
+                table.insert(
+                    styledNums,
+                    hs.styledtext.new(
+                        string.format(self.stringFormat, i), self.hasWindowsStyle
+                    )
+                )
             elseif self.showEmptySpaces then
                 -- No windows showing
-                table.insert(styledNums, hs.styledtext.new(i, self.noWindowsStyle))
+                table.insert(
+                    styledNums,
+                    hs.styledtext.new(
+                        string.format(self.stringFormat, i), self.noWindowsStyle
+                    )
+                )
             end
         end
 
@@ -78,7 +106,15 @@ function YabaiBar:update()
             disp = disp .. self.separator .. styledNums[i]
         end
 
-        self.bar:setTitle(disp)
+        self.bar:setTitle(
+            hs.styledtext.new("( ", {
+                font = hs.styledtext.defaultFonts.menuBar
+            })
+            .. disp
+            .. hs.styledtext.new(" )", {
+                font = hs.styledtext.defaultFonts.menuBar
+            })
+        )
     end, {"-m", "query", "--spaces"}):start()
 end
 
