@@ -1,0 +1,10 @@
+# region User Overrides
+[user]
+	email = 
+	email = 2905873+jiajie-chen@users.noreply.github.com
+	signingkey = 
+	signingkey = 0C70AC8283A138AC
+[commit]
+	gpgsign = 
+        gpgsign = true
+# endregion User Overrides

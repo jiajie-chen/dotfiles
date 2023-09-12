@@ -1,31 +1,42 @@
+# region User Configs
 [user]
-  name = JJ Chen
-  email = 2905873+jiajie-chen@users.noreply.github.com
-	signingkey = 0C70AC8283A138AC
-[includeIf "hasconfig:remote.*.url:https://github.huit.harvard.edu/**"]
-	path = ~/.gitconfig.huit
+	name = JJ Chen
+	email = 
 
+# region URL User Overrides
+
+# NOTE: if a repo has multiple remote matches, later entries take priority
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+	path = ~/.gitconfig.d/github-com.gitconfig
+[includeIf "hasconfig:remote.*.url:https://github.huit.harvard.edu/**"]
+	path = ~/.gitconfig.d/github-huit-harvard-edu.gitconfig
+
+# endregion URL User Overrides
+# endregion User Configs
+
+# region Git Credential Manager
 [credential]
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+# endregion Git Credential Manager
 
+# region Common
 [core]
-  editor = code -n --wait
+	editor = code -n --wait
 [diff]
-  tool = vscode
+	tool = vscode
 [difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+	cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-  tool = vscode
+	tool = vscode
 [mergetool "vscode"]
-  cmd = code --wait $MERGED
+	cmd = code --wait $MERGED
 [alias]
-  tree = log --graph --decorate --pretty=oneline --abbrev-commit
-[commit]
-	gpgsign = true
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 [init]
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
+# endregion Common

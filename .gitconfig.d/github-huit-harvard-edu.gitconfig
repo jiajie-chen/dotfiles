@@ -1,0 +1,10 @@
+# region User Overrides
+[user]
+	email = 
+	email = jj_chen@harvard.edu
+	signingkey = 
+	signingkey = 9B05ABEAC8A15EBD
+[commit]
+	gpgsign = 
+        gpgsign = true
+# endregion User Overrides
