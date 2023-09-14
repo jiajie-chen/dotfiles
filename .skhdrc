@@ -1,3 +1,4 @@
+# shellcheck disable=all
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
 # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
@@ -70,131 +71,60 @@
 #
 #               an EOL character signifies the end of the bind.
 
-# ############################################################### #
-# THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
-# TO INTERACT WITH THE YABAI WM. THESE ARE SUPPOSED TO BE USED AS #
-# A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
-# ############################################################### #
+# TODO: pressing lalt + ralt toggles these keybinds
+# TODO: hammerspoon port?
 
-# focus window
-# alt - h : yabai -m window --focus west
-
-# swap managed window
-# shift + alt - h : yabai -m window --swap north
-
-# move managed window
-# shift + cmd - h : yabai -m window --warp east
-
-# balance size of windows
-# shift + alt - 0 : yabai -m space --balance
-
-# make floating window fill screen
-# shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
-
-# make floating window fill left-half of screen
-# shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
-
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-# shift + cmd - n : yabai -m space --create && \
-#                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-#                   yabai -m window --space "${index}" && \
-#                   yabai -m space --focus "${index}"
-
-# fast focus desktop
-# cmd + alt - x : yabai -m space --focus recent
-# cmd + alt - 1 : yabai -m space --focus 1
-
-# send window to desktop and follow focus
-# shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
-# shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
-
-# focus monitor
-# ctrl + alt - z  : yabai -m display --focus prev
-# ctrl + alt - 3  : yabai -m display --focus 3
-
-# send window to monitor and follow focus
-# ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
-# ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-
-# move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
-
-# increase window size
-# shift + alt - a : yabai -m window --resize left:-20:0
-# shift + alt - w : yabai -m window --resize top:0:-20
-
-# decrease window size
-# shift + cmd - s : yabai -m window --resize bottom:0:-20
-# shift + cmd - w : yabai -m window --resize top:0:20
-
-# set insertion point in focused container
-# ctrl + alt - h : yabai -m window --insert west
-
-# toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
-# alt - f : yabai -m window --toggle zoom-fullscreen
-
-# toggle window split type
-alt - t : yabai -m window --toggle split
-
-# float / unfloat window and center on screen
-alt + shift - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-
-# toggle sticky(+float), topmost, picture-in-picture
-# alt - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
+# macOS bindings:
+# alt - ctrl - up : mission control
+# alt - ctrl - down : show apps
+# alt - ctrl - left : switch to prior space
+# alt - ctrl - right : switch to next space
+# alt - <number> : switch to desktop number 1-10
+# alt - space : show spotlight
 
 # change focus (using arrow keys)
-alt - left  : yabai -m window --focus west || \
-              yabai -m display --focus west
-alt - down  : yabai -m window --focus stack.prev || \
-              yabai -m window --focus stack.last || \
-              yabai -m window --focus south || \
-              yabai -m display --focus south
-alt - up    : yabai -m window --focus stack.next || \
-              yabai -m window --focus stack.first || \
-              yabai -m window --focus north || \
-              yabai -m display --focus north
-alt - right : yabai -m window --focus east || \
-              yabai -m display --focus east
+lalt - left  : yabai -m window --focus west \
+               || yabai -m display --focus west
+lalt - down  : yabai -m window --focus stack.prev \
+               || yabai -m window --focus stack.last \
+               || yabai -m window --focus south \
+               || yabai -m display --focus south
+lalt - up    : yabai -m window --focus stack.next \
+               || yabai -m window --focus stack.first \
+               || yabai -m window --focus north \
+               || yabai -m display --focus north
+lalt - right : yabai -m window --focus east \
+               || yabai -m display --focus east
 # shift window in current workspace
-alt + shift - left : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
-alt + shift - down : yabai -m window --warp south || $(yabai -m window --display south; yabai -m display --focus south)
-alt + shift - up : yabai -m window --warp north || $(yabai -m window --display north; yabai -m display --focus north)
-alt + shift - right : yabai -m window --warp east || $(yabai -m window --display east; yabai -m display --focus east)
-# set insertion point in focused container using arrows
-# alt + ctrl - left  : yabai -m window --insert west
-# alt + ctrl - down  : yabai -m window --insert south
-# alt + ctrl - up    : yabai -m window --insert north
-# alt + ctrl - right : yabai -m window --insert east
-# go back to previous workspace (kind of like back_and_forth in i3)
-# alt - b : yabai -m space --focus recent
-# move focused window to previous workspace
-# alt + shift - b : yabai -m window --space recent; \
-#                   yabai -m space --focus recent
+lalt + shift - left : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
+lalt + shift - down : yabai -m window --warp south || $(yabai -m window --display south; yabai -m display --focus south)
+lalt + shift - up : yabai -m window --warp north || $(yabai -m window --display north; yabai -m display --focus north)
+lalt + shift - right : yabai -m window --warp east || $(yabai -m window --display east; yabai -m display --focus east)
 # move focused window to next/prev workspace
-alt + shift - 1 : yabai -m window --space 1
-alt + shift - 2 : yabai -m window --space 2
-alt + shift - 3 : yabai -m window --space 3
-alt + shift - 4 : yabai -m window --space 4
-alt + shift - 5 : yabai -m window --space 5
-alt + shift - 6 : yabai -m window --space 6
-alt + shift - 7 : yabai -m window --space 7
-alt + shift - 8 : yabai -m window --space 8
-alt + shift - 9 : yabai -m window --space 9
-alt + shift - 0 : yabai -m window --space 10
-# mirror tree y-axis
-# alt + shift - y : yabai -m space --mirror y-axis
-# mirror tree x-axis
-# alt + shift - x : yabai -m space --mirror x-axis
+lalt + shift - 1 : yabai -m window --space 1
+lalt + shift - 2 : yabai -m window --space 2
+lalt + shift - 3 : yabai -m window --space 3
+lalt + shift - 4 : yabai -m window --space 4
+lalt + shift - 5 : yabai -m window --space 5
+lalt + shift - 6 : yabai -m window --space 6
+lalt + shift - 7 : yabai -m window --space 7
+lalt + shift - 8 : yabai -m window --space 8
+lalt + shift - 9 : yabai -m window --space 9
+lalt + shift - 0 : yabai -m window --space 10
+
+# toggle window split type
+lalt - t : yabai -m window --toggle split
+# float / unfloat window and center on screen
+lalt + shift - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 # change layout of desktop
-alt - e : yabai -m space --layout bsp
-alt - l : yabai -m space --layout float
-alt - s : yabai -m space --layout stack
+lalt - e : yabai -m space --layout bsp
+lalt - l : yabai -m space --layout float
+lalt - s : yabai -m space --layout stack
 # close focused window
-alt - w : yabai -m window --close
+lalt - w : yabai -m window --close
 # toggle window fullscreen
-alt - f : yabai -m window --toggle zoom-fullscreen
-alt + shift - f : yabai -m window --toggle native-fullscreen
+lalt - f : yabai -m window --toggle zoom-fullscreen
+lalt + shift - f : yabai -m window --toggle native-fullscreen
+
 # open terminal
-alt - return : osascript -e 'tell application "iTerm2" to set newSession to create window with default profile end tell' || open -na iTerm
+lalt - return : osascript -e 'tell application "iTerm2" to set newSession to create window with default profile end tell' || open -na iTerm

@@ -49,5 +49,5 @@ fi
 # endregion lsd
 
 # region Rancher Desktop
-export PATH="/Users/jchen/.rd/bin:$PATH"
+# export PATH="/Users/jchen/.rd/bin:$PATH"
 # endregion Rancher Desktop

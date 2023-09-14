@@ -6,7 +6,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # region vscode
 export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-# end region vscode
+# endregion vscode
 
 # region pyenv
 # export PYENV_ROOT="$HOME/.pyenv"
@@ -17,3 +17,7 @@ export PATH="${PATH}:/Applications/Visual Studio Code.app/Contents/Resources/app
 # region asdf
 source $(brew --prefix asdf)/libexec/asdf.sh
 # endregion asdf
+
+# region Docker M1
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+# endregion Docker M1
