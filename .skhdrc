@@ -127,4 +127,4 @@ lalt - f : yabai -m window --toggle zoom-fullscreen
 lalt + shift - f : yabai -m window --toggle native-fullscreen
 
 # open terminal
-lalt - return : osascript -e 'tell application "iTerm2" to set newSession to create window with default profile end tell' || open -na iTerm
+lalt - return : osascript -e 'tell application "iTerm2" to set newSession to create window with default profile end tell' || open -a iTerm

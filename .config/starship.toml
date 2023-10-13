@@ -30,7 +30,7 @@ format = """
 [  $os( $username) ](fg:sys-primary) [ $directory ](bold fg:dir-primary)\
 ( [ $git_branch( $git_status( $git_state)) ](fg:git-primary))\
 ( [( $python)( $nodejs)( $rust) ](fg:lang-primary) )\
-( [ $docker_context ](fg:docker-primary) )\
+( [( $docker_context)( $kubernetes) ](fg:docker-primary) )\
 \n$character \
 """
 ##endregion
@@ -78,7 +78,7 @@ format = ' $time'
 
 [status]
 disabled = false
-symbol = "󰋔 $int"
+symbol = "󰴔 $int"
 success_symbol = "󰣐"
 map_symbol = false
 format = "$symbol"
@@ -164,11 +164,11 @@ format = '$symbol $branch'
 
 [git_status]
 disabled = false
-conflicted = " ﰸ"
+conflicted = " 󰜺"
 ahead = " "
 behind = " "
 diverged = " 󱞫"
-untracked = " "
+untracked = " 󱔢"
 stashed = " "
 staged = " "
 renamed = " "
@@ -269,5 +269,18 @@ python_binary =	['python3', 'python', 'python2']
 disabled = false
 symbol = ""
 format = '$symbol $context( $path)'
+detect_files = [
+    "docker-compose.yml", "docker-compose.yaml", "Dockerfile",
+    "skaffold.yaml", "skaffold.yml"
+]
+
+[kubernetes]
+disabled = false
+symbol = "󱃾"
+format = '$symbol $context( $starship-namespace)'
+detect_files = [
+    "docker-compose.yml", "docker-compose.yaml", "Dockerfile",
+    "skaffold.yaml", "skaffold.yml"
+]
 
 ##endregion

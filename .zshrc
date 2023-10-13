@@ -1,10 +1,11 @@
 #!/bin/zsh
 
 # region zprofile
-if [ -f ~/.zprofile ]
-then
-  source ~/.zprofile
-fi
+# NOTE: probably unneeded, as it will call it twice on MacOS
+#if [ -f ~/.zprofile ]
+#then
+#  source ~/.zprofile
+#fi
 # endregion zprofile
 
 # region starship
@@ -48,6 +49,24 @@ then
 fi
 # endregion lsd
 
+# region pipx
+if type pipx &>/dev/null
+then
+  autoload -U bashcompinit
+  bashcompinit
+  eval "$(register-python-argcomplete pipx)"
+fi
+# endregion pipx
+
 # region Rancher Desktop
 # export PATH="/Users/jchen/.rd/bin:$PATH"
 # endregion Rancher Desktop
+
+# region Aliases
+# TODO: handle error when not in repo
+# alias cdgr='pushd "$(git rev-parse --show-toplevel)"'
+# endregion Aliases
+
+# region Local Scripts
+export PATH="$PATH:/Users/jchen/.local/bin"
+# endregion Local Scripts
