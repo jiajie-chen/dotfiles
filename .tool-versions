@@ -1,2 +1,4 @@
 nodejs 18.17.1
 python system
+kubectl 1.24.17
+asdf-plugin-manager 1.1.1

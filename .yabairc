@@ -52,9 +52,9 @@ yabai -m config                                 \
 yabai -m rule --add app='^System Information$' manage=off
 yabai -m rule --add app='^System Preferences$' manage=off
 yabai -m rule --add title='Preferences$' manage=off
-yabai -m rule --add app='^Cisco AnyConnect' manage=off 
+# yabai -m rule --add app='^Cisco AnyConnect' manage=off 
 yabai -m rule --add title='Settings$' manage=off
-yabai -m rule --add app='^Code$' title='^COMMIT_EDITMSG$' manage=off
+# yabai -m rule --add app='^Code$' title='^COMMIT_EDITMSG$' manage=off
 yabai -m rule --add app='^Logi Options\+$' manage=off
 
 # float non-resizable

@@ -160,7 +160,7 @@ truncate_to_repo = true
 [git_branch]
 disabled = false
 symbol = ""
-format = '$symbol $branch'
+format = '$symbol( $branch)'
 
 [git_status]
 disabled = false
@@ -269,6 +269,7 @@ python_binary =	['python3', 'python', 'python2']
 disabled = false
 symbol = ""
 format = '$symbol $context( $path)'
+only_with_files = false
 detect_files = [
     "docker-compose.yml", "docker-compose.yaml", "Dockerfile",
     "skaffold.yaml", "skaffold.yml"
@@ -278,9 +279,9 @@ detect_files = [
 disabled = false
 symbol = "󱃾"
 format = '$symbol $context( $starship-namespace)'
-detect_files = [
-    "docker-compose.yml", "docker-compose.yaml", "Dockerfile",
-    "skaffold.yaml", "skaffold.yml"
-]
+# detect_files = [
+#     "docker-compose.yml", "docker-compose.yaml", "Dockerfile",
+#     "skaffold.yaml", "skaffold.yml"
+# ]
 
 ##endregion

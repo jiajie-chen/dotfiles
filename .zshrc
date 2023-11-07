@@ -8,6 +8,13 @@
 #fi
 # endregion zprofile
 
+# region autoload
+autoload -Uz compinit
+compinit
+autoload -U bashcompinit
+bashcompinit
+# endregion autoload
+
 # region starship
 if type starship &>/dev/null
 then
@@ -26,8 +33,6 @@ bindkey '^[[Z' autosuggest-accept
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  autoload -Uz compinit
-  compinit
 fi
 # endregion brew-autocomplete
 
@@ -52,8 +57,6 @@ fi
 # region pipx
 if type pipx &>/dev/null
 then
-  autoload -U bashcompinit
-  bashcompinit
   eval "$(register-python-argcomplete pipx)"
 fi
 # endregion pipx
@@ -67,6 +70,20 @@ fi
 # alias cdgr='pushd "$(git rev-parse --show-toplevel)"'
 # endregion Aliases
 
+# region kubectl
+if type kubectl &>/dev/null
+then
+  source <(kubectl completion zsh)
+fi
+# endregion kubectl
+
+# region k9s
+if type k9s &>/dev/null
+then
+  source <(k9s completion zsh); compdef _k9s k9s
+fi
+# endregion k9s
+
 # region Local Scripts
-export PATH="$PATH:/Users/jchen/.local/bin"
+export PATH="/Users/jchen/.local/bin:$PATH"
 # endregion Local Scripts

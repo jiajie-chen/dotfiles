@@ -1,5 +1,5 @@
 -- https://github.com/kcmyang/yabai-bar
-require("hs.ipc")
+-- Must enable Hammerspoon IPC
 
 local YabaiBar = {}
 
