@@ -62,7 +62,7 @@ fi
 # endregion pipx
 
 # region Rancher Desktop
-# export PATH="/Users/jchen/.rd/bin:$PATH"
+export PATH="$PATH:/Users/jchen/.rd/bin"
 # endregion Rancher Desktop
 
 # region Aliases

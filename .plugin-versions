@@ -1,0 +1,6 @@
+asdf-plugin-manager  https://github.com/asdf-community/asdf-plugin-manager.git  72b5830
+istioctl             https://github.com/virtualstaticvoid/asdf-istioctl.git     6ec43e8
+kubectl              https://github.com/asdf-community/asdf-kubectl.git         cbe6df4
+nerdctl              https://github.com/dmpe/asdf-nerdctl.git                   2e00baa
+nodejs               https://github.com/asdf-vm/asdf-nodejs.git                 4f8aa3d
+python               https://github.com/danhper/asdf-python.git                 8505457

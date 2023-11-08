@@ -28,7 +28,7 @@
 format = """
 ([┆ $status ](bold fg:alert-primary))\
 [  $os( $username) ](fg:sys-primary) [ $directory ](bold fg:dir-primary)\
-( [ $git_branch( $git_status( $git_state)) ](fg:git-primary))\
+( [( $git_branch)( $git_commit)( $git_status)( $git_state) ](fg:git-primary))\
 ( [( $python)( $nodejs)( $rust) ](fg:lang-primary) )\
 ( [( $docker_context)( $kubernetes) ](fg:docker-primary) )\
 \n$character \
@@ -159,8 +159,17 @@ truncate_to_repo = true
 
 [git_branch]
 disabled = false
+only_attached = true
+truncation_length = 32
 symbol = ""
 format = '$symbol( $branch)'
+
+[git_commit]
+disabled = false
+only_detached = true
+tag_disabled = true
+tag_symbol = ""
+format = '( $hash)'
 
 [git_status]
 disabled = false
