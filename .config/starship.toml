@@ -26,17 +26,20 @@
 
 ##region Format Minimal
 format = """
-([┆ $status ](bold fg:alert-primary))\
-[  $os( $username) ](fg:sys-primary) [ $directory ](bold fg:dir-primary)\
-( [( $git_branch)( $git_commit)( $git_status)( $git_state) ](fg:git-primary))\
-( [( $python)( $nodejs)( $rust) ](fg:lang-primary) )\
-( [( $docker_context)( $kubernetes) ](fg:docker-primary) )\
+[┆](fg:sep-primary)\
+( [$status](bold fg:alert-primary))\
+( [](fg:sep-primary)[ $os( $username)](fg:sys-primary))\
+( [](fg:sep-primary)[ $directory](bold fg:dir-primary))\
+( [](fg:sep-primary)[( $git_branch)( $git_commit)( $git_status)( $git_state)](fg:git-primary))\
+( [](fg:sep-primary)[( $python)( $nodejs)( $rust)](fg:lang-primary))\
+( [](fg:sep-primary)[( $docker_context)( $kubernetes)](fg:docker-primary))\
+[ ](fg:sep-primary)\
 \n$character \
 """
 ##endregion
 
 # continuation_prompt = '$fill'
-command_timeout = 1000
+command_timeout = 1500
 # Blank line at the start of the prompt
 add_newline = true
 
@@ -45,6 +48,7 @@ add_newline = true
 
 palette = 'dracula'
 [palettes.pastel]
+sep-primary = 'bright-black'
 sys-primary = '#9A348E'
 dir-primary = '#DA627D'
 git-primary = '#FCA17D'
@@ -54,6 +58,7 @@ docker-primary = '#06969A'
 alert-primary = 'red'
 alert-secondary = "#FF0000"
 [palettes.dracula]
+sep-primary = 'bright-black'
 sys-primary = '#FF79C6'
 dir-primary = '#BD93F9'
 git-primary = '#FFB86C'

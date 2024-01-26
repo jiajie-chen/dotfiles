@@ -40,3 +40,5 @@
 [push]
 	autoSetupRemote = true
 # endregion Common
+[submodule]
+	recurse = true

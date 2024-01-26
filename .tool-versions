@@ -1,5 +1,5 @@
 nodejs 18.17.1
-python system
+python 3.11.4
 kubectl 1.24.17
 asdf-plugin-manager 1.1.1
 istioctl 1.18.5

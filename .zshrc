@@ -84,6 +84,13 @@ then
 fi
 # endregion k9s
 
+# region Pipenv
+if type pipenv &>/dev/null
+then
+  PIPENV_SKIP_LOCK=1
+fi
+# endregion Pipenv
+
 # region Local Scripts
 export PATH="/Users/jchen/.local/bin:$PATH"
 # endregion Local Scripts
