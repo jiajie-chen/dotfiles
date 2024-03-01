@@ -22,6 +22,13 @@
 	useHttpPath = true
 # endregion Git Credential Manager
 
+# region Git Town
+[git-town]
+	offline = false
+	main-branch = main
+	push-new-branches = false
+# endregion Git Town
+
 # region Common
 [core]
 	editor = code -n --wait
@@ -34,11 +41,26 @@
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
 [alias]
+	# Custom CLI graph view
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	# Git Town aliases
+	# append = town append
+	# diff-parent = town diff-parent
+	# hack = town hack
+	# kill = town kill
+	# prepend = town prepend
+	# propose = town propose
+	# rename-branch = town rename-branch
+	# repo = town repo
+	# set-parent = town set-parent
+	# ship = town ship
+	# sync = town sync
 [init]
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
-# endregion Common
 [submodule]
 	recurse = true
+# endregion Common
+[rebase]
+	autoSquash = true
