@@ -27,6 +27,8 @@
 	offline = false
 	main-branch = main
 	push-new-branches = false
+	sync-feature-strategy = rebase
+	sync-before-ship = true
 # endregion Git Town
 
 # region Common
@@ -61,6 +63,6 @@
 	autoSetupRemote = true
 [submodule]
 	recurse = true
-# endregion Common
 [rebase]
 	autoSquash = true
+# endregion Common
