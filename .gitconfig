@@ -65,4 +65,5 @@
 	recurse = true
 [rebase]
 	autoSquash = true
+	updateRefs = true
 # endregion Common
