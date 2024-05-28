@@ -8,6 +8,8 @@
 # NOTE: if a repo has multiple remote matches, later entries take priority
 [includeIf "hasconfig:remote.*.url:https://github.com/**"]
 	path = ~/.gitconfig.d/github-com.gitconfig
+[includeIf "hasconfig:remote.*.url:https://www.github.com/**"]
+	path = ~/.gitconfig.d/github-com.gitconfig
 [includeIf "hasconfig:remote.*.url:https://github.huit.harvard.edu/**"]
 	path = ~/.gitconfig.d/github-huit-harvard-edu.gitconfig
 
@@ -23,6 +25,7 @@
 # endregion Git Credential Manager
 
 # region Git Town
+# NOTE: disabled plugin for now
 [git-town]
 	offline = false
 	main-branch = main
@@ -65,5 +68,5 @@
 	recurse = true
 [rebase]
 	autoSquash = true
-	updateRefs = true
+	# updateRefs = true
 # endregion Common
