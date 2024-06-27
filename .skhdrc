@@ -41,7 +41,7 @@
 #                  to chain commands.
 #
 #                  to allow a command to extend into multiple lines,
-#                  prepend '\' at the end of the previous line.
+#                  append '\' at the end of the previous line.
 #
 #                  an EOL character signifies the end of the bind.
 #
@@ -75,56 +75,61 @@
 # TODO: hammerspoon port?
 
 # macOS bindings:
-# alt - ctrl - up : mission control
-# alt - ctrl - down : show apps
-# alt - ctrl - left : switch to prior space
-# alt - ctrl - right : switch to next space
-# alt - <number> : switch to desktop number 1-10
 # alt - space : show spotlight
 
-# # change focus (using arrow keys)
-# lalt - left  : yabai -m window --focus west \
-#                || yabai -m display --focus west
-# lalt - down  : yabai -m window --focus stack.prev \
-#                || yabai -m window --focus stack.last \
-#                || yabai -m window --focus south \
-#                || yabai -m display --focus south
-# lalt - up    : yabai -m window --focus stack.next \
-#                || yabai -m window --focus stack.first \
-#                || yabai -m window --focus north \
-#                || yabai -m display --focus north
-# lalt - right : yabai -m window --focus east \
-#                || yabai -m display --focus east
-# # shift window in current workspace
-# lalt + shift - left : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west)
-# lalt + shift - down : yabai -m window --warp south || $(yabai -m window --display south; yabai -m display --focus south)
-# lalt + shift - up : yabai -m window --warp north || $(yabai -m window --display north; yabai -m display --focus north)
-# lalt + shift - right : yabai -m window --warp east || $(yabai -m window --display east; yabai -m display --focus east)
-# # move focused window to next/prev workspace
-# lalt + shift - 1 : yabai -m window --space 1
-# lalt + shift - 2 : yabai -m window --space 2
-# lalt + shift - 3 : yabai -m window --space 3
-# lalt + shift - 4 : yabai -m window --space 4
-# lalt + shift - 5 : yabai -m window --space 5
-# lalt + shift - 6 : yabai -m window --space 6
-# lalt + shift - 7 : yabai -m window --space 7
-# lalt + shift - 8 : yabai -m window --space 8
-# lalt + shift - 9 : yabai -m window --space 9
-# lalt + shift - 0 : yabai -m window --space 10
+# change focused window (using arrow keys)
+lalt - left  : aerospace focus left
+lalt - down  : aerospace focus down
+lalt - up    : aerospace focus up
+lalt - right : aerospace focus right
+# move focused window
+lalt + shift - left  : aerospace move left
+lalt + shift - down  : aerospace move down
+lalt + shift - up    : aerospace move up
+lalt + shift - right : aerospace move right
+# join/group focused window
+lalt + ctrl - left  : aerospace join-with left
+lalt + ctrl - down  : aerospace join-with down
+lalt + ctrl - up    : aerospace join-with up
+lalt + ctrl - right : aerospace join-with right
+# change focused workspace
+lalt - 1 : aerospace workspace --auto-back-and-forth 1
+lalt - 2 : aerospace workspace --auto-back-and-forth 2
+lalt - 3 : aerospace workspace --auto-back-and-forth 3
+lalt - 4 : aerospace workspace --auto-back-and-forth 4
+lalt - 5 : aerospace workspace --auto-back-and-forth 5
+lalt - 6 : aerospace workspace --auto-back-and-forth 6
+lalt - 7 : aerospace workspace --auto-back-and-forth 7
+lalt - 8 : aerospace workspace --auto-back-and-forth 8
+lalt - 9 : aerospace workspace --auto-back-and-forth 9
+lalt - 0 : aerospace workspace --auto-back-and-forth 10
+# move focused window to workspace
+lalt + shift - 1 : aerospace move-node-to-workspace 1
+lalt + shift - 2 : aerospace move-node-to-workspace 2
+lalt + shift - 3 : aerospace move-node-to-workspace 3
+lalt + shift - 4 : aerospace move-node-to-workspace 4
+lalt + shift - 5 : aerospace move-node-to-workspace 5
+lalt + shift - 6 : aerospace move-node-to-workspace 6
+lalt + shift - 7 : aerospace move-node-to-workspace 7
+lalt + shift - 8 : aerospace move-node-to-workspace 8
+lalt + shift - 9 : aerospace move-node-to-workspace 9
+lalt + shift - 0 : aerospace move-node-to-workspace 10
+# move focused workspace to monitor
+lalt + ctrl + shift - left  : aerospace move-workspace-to-monitor --wrap-around prev
+lalt + ctrl + shift - right : aerospace move-workspace-to-monitor --wrap-around next
 
-# # toggle window split type
-# lalt - t : yabai -m window --toggle split
-# # float / unfloat window and center on screen
-# lalt + shift - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-# # change layout of desktop
-# lalt - e : yabai -m space --layout bsp
-# lalt - l : yabai -m space --layout float
-# lalt - s : yabai -m space --layout stack
-# # close focused window
-# lalt - w : yabai -m window --close
-# # toggle window fullscreen
-# lalt - f : yabai -m window --toggle zoom-fullscreen
-# lalt + shift - f : yabai -m window --toggle native-fullscreen
+# resizing focused window (minus/equal keys)
+lalt + shift - 0x1B : aerospace resize smart -50
+lalt + shift - 0x18 : aerospace resize smart +50
+
+# change layout of desktop
+lalt         - e     : aerospace layout tiles horizontal vertical
+lalt         - s     : aerospace layout v_accordion
+lalt         - w     : aerospace layout h_accordion
+lalt + shift - space : aerospace layout floating tiling
+# toggle window fullscreen
+lalt         - f : aerospace fullscreen
+lalt + shift - f : aerospace macos-native-fullscreen
 
 # open terminal
-lalt - return : osascript -e 'tell application "iTerm2" to set newSession to create window with default profile end tell' || open -a iTerm
+lalt - return : osascript -e 'tell application "iTerm2" to create window with default profile'
