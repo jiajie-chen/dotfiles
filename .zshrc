@@ -8,8 +8,15 @@ eval "$(${brew_prefix}/bin/brew shellenv)"
 # endregion brew
 
 # region asdf
-source "${brew_prefix}/opt/asdf/libexec/asdf.sh"
+#source "${brew_prefix}/opt/asdf/libexec/asdf.sh"
 # endregion asdf
+
+# region mise
+if [ -n "${HOME:-}" ]
+then
+  path=("${HOME}/.local/share/mise/shims" $path)
+fi
+# endregion mise
 
 # region brew-autocomplete
 if type brew &>/dev/null
