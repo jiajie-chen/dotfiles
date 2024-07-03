@@ -78,10 +78,10 @@
 # alt - space : show spotlight
 
 # change focused window (using arrow keys)
-lalt - left  : aerospace focus left
-lalt - down  : aerospace focus down
-lalt - up    : aerospace focus up
-lalt - right : aerospace focus right
+lalt - left  : aerospace focus --boundaries all-monitors-outer-frame left
+lalt - down  : aerospace focus --boundaries all-monitors-outer-frame down
+lalt - up    : aerospace focus --boundaries all-monitors-outer-frame up
+lalt - right : aerospace focus --boundaries all-monitors-outer-frame right
 # move focused window
 lalt + shift - left  : aerospace move left
 lalt + shift - down  : aerospace move down

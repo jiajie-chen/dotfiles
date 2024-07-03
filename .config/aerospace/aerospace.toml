@@ -59,6 +59,18 @@ inherit-env-vars = true
 # [exec.env-vars]
 # PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
+[workspace-to-monitor-force-assignment]
+1 =  'secondary'
+2 =  'secondary'
+3 =  'secondary'
+4 =  'secondary'
+5 =  'secondary'
+6 =  'main'
+7 =  'main'
+8 =  'main'
+9 =  'main'
+10 = 'main'
+
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
