@@ -1,5 +1,5 @@
 [tools]
 python = "3.9"
 node = "20"
-kubectl = "1.28"
 istioctl = "1.18"
+kubectl = "1.31"

@@ -42,7 +42,7 @@ key-mapping.preset = 'qwerty'
 # Drop it from your config, if you don't like this behavior
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
-on-focus-changed = ['move-mouse monitor-lazy-center']
+# on-focus-changed = ['move-mouse monitor-lazy-center']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -170,3 +170,6 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.logi.optionsplus'
 run = ['layout floating']
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = ['layout tiling', 'move-node-to-workspace 10']
