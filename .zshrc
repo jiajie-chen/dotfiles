@@ -15,6 +15,8 @@ eval "$(${brew_prefix}/bin/brew shellenv)"
 if [ -n "${HOME:-}" ]
 then
   path=("${HOME}/.local/share/mise/shims" $path)
+  # For tools that resolve things via asdf
+  export ASDF_DATA_DIR="${HOME}/.local/share/mise/"
 fi
 # endregion mise
 

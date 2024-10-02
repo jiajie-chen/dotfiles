@@ -38,6 +38,12 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 key-mapping.preset = 'qwerty'
 
+# Mouse follows focus when focused window/workspace changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+on-focus-changed = ['move-mouse monitor-lazy-center']
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -60,21 +66,23 @@ inherit-env-vars = true
 # PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 [workspace-to-monitor-force-assignment]
-1 =  'secondary'
-2 =  'secondary'
-3 =  'secondary'
-4 =  'secondary'
-5 =  'secondary'
-6 =  'main'
-7 =  'main'
-8 =  'main'
-9 =  'main'
-10 = 'main'
+1 =  'main'
+2 =  'main'
+3 =  'main'
+4 =  'main'
+5 =  'main'
+6 =  'secondary'
+7 =  'secondary'
+8 =  'secondary'
+9 =  'secondary'
+10 = 'secondary'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 [mode.main.binding]
+# Toggle the actual keybinds for Aerospace
+alt-esc = 'mode active'
 
 # All possible keys:
 # - Letters.        a, b, c, ..., z
@@ -91,17 +99,70 @@ inherit-env-vars = true
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-tab = 'mode service'
+# External global bindings to be aware of
+# macOS bindings:
+# alt-space = show spotlight
 
-# 'service' binding mode declaration.
+# 'active' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-[mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-shift-esc = ['enable toggle', 'mode main']
+[mode.active.binding]
+alt-esc = 'mode main'
 
-# Other keybinds are handled by `skhd`
+# change focused window (using arrow keys)
+alt-left  = 'focus --boundaries all-monitors-outer-frame left'
+alt-down  = 'focus --boundaries all-monitors-outer-frame down'
+alt-up    = 'focus --boundaries all-monitors-outer-frame up'
+alt-right = 'focus --boundaries all-monitors-outer-frame right'
+# move focused window
+alt-shift-left  = 'move left'
+alt-shift-down  = 'move down'
+alt-shift-up    = 'move up'
+alt-shift-right = 'move right'
+# join/group focused window
+alt-ctrl-left  = 'join-with left'
+alt-ctrl-down  = 'join-with down'
+alt-ctrl-up    = 'join-with up'
+alt-ctrl-right = 'join-with right'
+# change focused workspace
+alt-1 = 'workspace --auto-back-and-forth 1'
+alt-2 = 'workspace --auto-back-and-forth 2'
+alt-3 = 'workspace --auto-back-and-forth 3'
+alt-4 = 'workspace --auto-back-and-forth 4'
+alt-5 = 'workspace --auto-back-and-forth 5'
+alt-6 = 'workspace --auto-back-and-forth 6'
+alt-7 = 'workspace --auto-back-and-forth 7'
+alt-8 = 'workspace --auto-back-and-forth 8'
+alt-9 = 'workspace --auto-back-and-forth 9'
+alt-0 = 'workspace --auto-back-and-forth 10'
+# move focused window to workspace
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+# move focused workspace to monitor
+alt-ctrl-shift-left  = 'move-workspace-to-monitor --wrap-around prev'
+alt-ctrl-shift-right = 'move-workspace-to-monitor --wrap-around next'
+
+# resizing focused window
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+# change layout of desktop
+alt-e           = 'layout tiles horizontal vertical'
+alt-s           = 'layout v_accordion'
+alt-w           = 'layout h_accordion'
+alt-shift-space = 'layout floating tiling'
+# toggle window fullscreen
+alt-shift-f = 'fullscreen'
+
+# open terminal
+alt-enter = '''exec-and-forget osascript -e 'tell application "iTerm2" to create window with default profile' || open -a iTerm'''
 
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'

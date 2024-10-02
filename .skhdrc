@@ -132,4 +132,4 @@ lalt         - f : aerospace fullscreen
 lalt + shift - f : aerospace macos-native-fullscreen
 
 # open terminal
-lalt - return : osascript -e 'tell application "iTerm2" to create window with default profile'
+lalt - return : osascript -e 'tell application "iTerm2" to create window with default profile' || open -a iTerm

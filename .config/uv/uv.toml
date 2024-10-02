@@ -1,0 +1,3 @@
+# Using `mise` instead for Python versions, since it's more universal
+python-downloads = 'never'
+python-preference = 'only-system'
