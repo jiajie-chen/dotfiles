@@ -1,0 +1,57 @@
+# Install all hook types by default
+default_install_hook_types:
+- commit-msg
+- post-checkout
+- post-commit
+- post-merge
+- post-rewrite
+- pre-commit
+- pre-merge-commit
+- pre-push
+- pre-rebase
+- prepare-commit-msg
+
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+# Pre-commit first-party hooks
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  # - id: check-yaml
+  - id: check-merge-conflict
+  - id: check-added-large-files
+  - id: mixed-line-ending
+    args: [ --fix=no ]
+
+# Third-party hooks
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.9.6
+  hooks:
+    - id: ruff
+    #   args: [ --fix ]
+    # - id: ruff-format
+# NOTE: isort must happen after `ruff-format` or `ruff --fix`
+- repo: https://github.com/pycqa/isort
+  rev: 5.11.2
+  hooks:
+    - id: isort
+      name: isort (python)
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+    -   id: shellcheck
+
+# Local custom hooks
+- repo: local
+  hooks:
+    # Ensure Jira ticket prefix pattern in commit message
+    # See: https://github.com/pre-commit/pre-commit-hooks/issues/460#issuecomment-593752871
+    - id: jira-ticket
+      name: check for jira ticket
+      language: pygrep
+      entry: '\A(?![A-Z]+-[0-9]+: .+)'
+      args: [ --multiline ]
+      stages: [ commit-msg ]

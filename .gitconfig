@@ -62,6 +62,7 @@
 	# sync = town sync
 [init]
 	defaultBranch = main
+	templateDir = /Users/jchen/.config/git-templates/build/
 [push]
 	autoSetupRemote = true
 [submodule]
