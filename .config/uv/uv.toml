@@ -1,4 +1,4 @@
 # Using `mise` instead for Python versions, since it's more universal
-# NOTE: removing old versions in `mise` may result in broken tool `venv`s
+# NOTE: removing old versions in `mise` may result in broken `venv`s, but should be easy to resync
 python-downloads = 'never'
 python-preference = 'only-system'
