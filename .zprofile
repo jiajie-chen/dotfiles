@@ -1,4 +1,9 @@
 #!/bin/zsh
+
+# region brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# endregion brew
+
 # region mise
 if [ -n "${HOME:-}" ]
 then

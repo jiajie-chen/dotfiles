@@ -73,10 +73,10 @@ export GPG_TTY=$(tty)
 # endregion gpg
 
 # region direnv
-if type direnv &>/dev/null
-then
-  eval "$(direnv hook zsh)"
-fi
+#if type direnv &>/dev/null
+#then
+#  eval "$(direnv hook zsh)"
+#fi
 # endregion direnv
 
 # region lsd
