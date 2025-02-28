@@ -18,8 +18,13 @@
 
 # region Git Credential Manager
 [credential]
+	# Using GCM to do the OAuth2 flow and get temp access tokens
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
+	# Use in-memory (non-persistent) cache for creds
+	# Re-authentication after 8 hours (28800 seconds)
+	credentialStore = cache
+	cacheOptions = --timeout 28800
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 # endregion Git Credential Manager
@@ -62,7 +67,7 @@
 	# sync = town sync
 [init]
 	defaultBranch = main
-	templateDir = /Users/jchen/.config/git-templates/build/
+	templateDir = ~/.config/git-templates/build/
 [push]
 	autoSetupRemote = true
 [submodule]

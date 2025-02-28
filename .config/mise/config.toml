@@ -1,5 +1,4 @@
 [tools]
-python = "3.9"
+python = "3.11"
 node = "20"
-istioctl = "1.18"
 kubectl = "1.31"

@@ -14,7 +14,7 @@ eval "$(${brew_prefix}/bin/brew shellenv)"
 # region mise
 if [ -n "${HOME:-}" ]
 then
-  path=("${HOME}/.local/share/mise/shims" $path)
+  eval "$(mise activate zsh)"
   # For tools that resolve things via asdf
   export ASDF_DATA_DIR="${HOME}/.local/share/mise/"
 fi

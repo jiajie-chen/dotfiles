@@ -1,4 +1,5 @@
-# Install all hook types by default
+# Install all hook types by default, this is only needed for common git hook templating
+# NOTE: ensure hooks have explict stages set so stuff isn't run repeatedly
 default_install_hook_types:
 - commit-msg
 - post-checkout
@@ -18,40 +19,52 @@ repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v3.2.0
   hooks:
+  - id: no-commit-to-branch
+    # Ensure Jira ticket prefix pattern ('XXX-123_<etc...>'') in branch name
+    args: [ "--pattern='^(?![A-Z]+-[0-9]+_.+)'" ]
+    stages: [ pre-commit ]
   - id: trailing-whitespace
+    stages: [ pre-commit ]
   - id: end-of-file-fixer
-  # - id: check-yaml
+    stages: [ pre-commit ]
   - id: check-merge-conflict
+    stages: [ pre-commit ]
   - id: check-added-large-files
+    stages: [ pre-commit ]
   - id: mixed-line-ending
     args: [ --fix=no ]
+    stages: [ pre-commit ]
 
 # Third-party hooks
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.9.6
   hooks:
-    - id: ruff
-    #   args: [ --fix ]
-    # - id: ruff-format
+  - id: ruff
+    # args: [ --fix ]
+    stages: [ pre-commit ]
+  # - id: ruff-format
+  #   stages: [ pre-commit ]
 # NOTE: isort must happen after `ruff-format` or `ruff --fix`
 - repo: https://github.com/pycqa/isort
-  rev: 5.11.2
+  rev: '5.13.2'
   hooks:
-    - id: isort
-      name: isort (python)
--   repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.10.0.1
-    hooks:
-    -   id: shellcheck
+  - id: isort
+    name: isort (python)
+    stages: [ pre-commit ]
+- repo: https://github.com/shellcheck-py/shellcheck-py
+  rev: v0.10.0.1
+  hooks:
+  - id: shellcheck
+    stages: [ pre-commit ]
 
 # Local custom hooks
 - repo: local
   hooks:
-    # Ensure Jira ticket prefix pattern in commit message
-    # See: https://github.com/pre-commit/pre-commit-hooks/issues/460#issuecomment-593752871
-    - id: jira-ticket
-      name: check for jira ticket
-      language: pygrep
-      entry: '\A(?![A-Z]+-[0-9]+: .+)'
-      args: [ --multiline ]
-      stages: [ commit-msg ]
+  # Ensure Jira ticket prefix pattern ('XXX-123: <etc...>'') in commit message
+  # See: https://github.com/pre-commit/pre-commit-hooks/issues/460#issuecomment-593752871
+  - id: jira-ticket
+    name: check for jira ticket
+    language: pygrep
+    entry: '\A(?![A-Z]+-[0-9]+: .+)'
+    args: [ --multiline ]
+    stages: [ commit-msg ]

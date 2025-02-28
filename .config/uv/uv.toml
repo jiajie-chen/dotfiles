@@ -1,3 +1,4 @@
 # Using `mise` instead for Python versions, since it's more universal
+# NOTE: removing old versions in `mise` may result in broken tool `venv`s
 python-downloads = 'never'
 python-preference = 'only-system'

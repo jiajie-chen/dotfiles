@@ -48,7 +48,7 @@ You can also rerun `git init` in an existing repo to apply any configured templa
 
 If the global `init.templateDir` is configured, you can opt out and just use the default `.git` template for specific repos.
 
-Do this by passing in the `--template /usr/share/git-core/templates` flag to your `git init`/`git clone`s (Assuming this is the default template path as installed by Git on your system).
+Do this by passing in the `--template /dev/null` flag to your `git init`/`git clone`s.
 
 ## Non-templated Pre-commit Hooks
 
