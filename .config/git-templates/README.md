@@ -2,12 +2,18 @@
 
 This contains code for building a Git repo template, for usage by `init.templateDir`.
 
-The primary use is to configure Git hooks that should always be enabled in your local repos.
+The primary use is to configure default Git hooks in your local repos.
 
 ## Requirements
 
 You must have Git installed and Pre-commit.
-To install Pre-commit, it's recommended to use Homebrew, `pipx` or `uv tool install`
+To install Pre-commit, it's recommended to use Homebrew, `pipx` or `uv tool install`.
+
+## Quick Start
+
+1. Run `./build.sh` from the same directory as this README.
+
+2. Configure your default Git template directory (`init.templateDir`) to use the created `build/` output.
 
 ## Git Hooks
 
@@ -17,11 +23,14 @@ The hooks to be used in templates are configured in `./.pre-commit-config.yaml`:
 
 ### Local Pre-commit Hooks
 
+> NOTE: \
+> Local hooks are still a WIP, this section isn't up to date.
+
 Local pre-commit hook source code is located in `./local-hooks/`, each hook package in their own subdirectory.
 
 This allows for custom pre-commit hooks that aren't already packaged by third-parties.
 
-The hook entrypoints must be registered in the ``./.pre-commit-config.yaml` using the `repo: local` flag and associated configs: https://pre-commit.com/#repository-local-hooks
+The hook entrypoints must be registered in the `./.pre-commit-config.yaml` using the `repo: local` flag and associated configs: https://pre-commit.com/#repository-local-hooks
 
 Additionally, custom hook packages can include an executable `build.sh` to help do any build/setup needed for final installation by pre-commit.
 
@@ -54,7 +63,9 @@ Do this by passing in the `--template /dev/null` flag to your `git init`/`git cl
 
 For repo-specific hooks, you can use pre-commit to configure a repo-local `.pre-commit-config.yaml`: https://pre-commit.com/#plugins
 
-These are not handled by this builder.
+Note that this will overwrite the hooks configured by this repo.
+
+Local hooks are not handled by this builder.
 
 # TODOs
 

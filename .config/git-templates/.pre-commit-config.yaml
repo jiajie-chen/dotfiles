@@ -22,7 +22,7 @@ repos:
   - id: no-commit-to-branch
     # Ensure Jira ticket prefix pattern ('XXX-123_<etc...>'') in branch name
     args: [ "--pattern='^(?![A-Z]+-[0-9]+_.+)'" ]
-    stages: [ pre-commit ]
+    # stages: [ pre-commit ]
   - id: trailing-whitespace
     stages: [ pre-commit ]
   - id: end-of-file-fixer
@@ -45,12 +45,12 @@ repos:
   # - id: ruff-format
   #   stages: [ pre-commit ]
 # NOTE: isort must happen after `ruff-format` or `ruff --fix`
-- repo: https://github.com/pycqa/isort
-  rev: '5.13.2'
-  hooks:
-  - id: isort
-    name: isort (python)
-    stages: [ pre-commit ]
+# - repo: https://github.com/pycqa/isort
+#   rev: '5.13.2'
+#   hooks:
+#   - id: isort
+#     name: isort (python)
+#     stages: [ pre-commit ]
 - repo: https://github.com/shellcheck-py/shellcheck-py
   rev: v0.10.0.1
   hooks:

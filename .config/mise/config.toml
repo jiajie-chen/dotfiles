@@ -2,3 +2,5 @@
 python = "3.11"
 node = "20"
 kubectl = "1.31"
+"pipx:git+https://github.huit.harvard.edu/jic012/aws-login-saml-cli.git" = "stable"
+"pipx:nbdev" = "latest"
