@@ -4,3 +4,6 @@ node = "20"
 kubectl = "1.31"
 "pipx:git+https://github.huit.harvard.edu/jic012/aws-login-saml-cli.git" = "stable"
 "pipx:nbdev" = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["python", "node"]

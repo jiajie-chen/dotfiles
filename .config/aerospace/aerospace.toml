@@ -173,3 +173,6 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = ['layout tiling', 'move-node-to-workspace 10']
+[[on-window-detected]]
+if.app-id = 'com.cisco.secureclient.gui'
+run = ['layout floating']
