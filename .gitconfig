@@ -19,12 +19,12 @@
 # region Git Credential Manager
 [credential]
 	# Using GCM to do the OAuth2 flow and get temp access tokens
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
 	# Use in-memory (non-persistent) cache for creds
 	# Re-authentication after 8 hours (28800 seconds)
 	credentialStore = cache
 	cacheOptions = --timeout 28800
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 # endregion Git Credential Manager
@@ -53,6 +53,10 @@
 [alias]
 	# Custom CLI graph view
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	# Git prune local branches of merged PRs
+	# From: https://stackoverflow.com/a/47939403
+	prune-delete = "!f() { git fetch --prune && git branch --delete $(git for-each-ref --format '%(if:equals=gone)%(upstream:track,nobracket)%(then)%(refname:short)%(end)' refs/heads/); }; f"
+
 	# Git Town aliases
 	# append = town append
 	# diff-parent = town diff-parent
@@ -65,6 +69,8 @@
 	# set-parent = town set-parent
 	# ship = town ship
 	# sync = town sync
+
+	# Other useful aliases: https://github.com/GitAlias/gitalias
 [init]
 	defaultBranch = main
 	templateDir = ~/.config/git-templates/build/

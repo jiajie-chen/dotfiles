@@ -69,7 +69,7 @@ fi
 # endregion starship
 
 # region gpg
-export GPG_TTY=$(tty)
+export GPG_TTY="$(tty)"
 # endregion gpg
 
 # region direnv
