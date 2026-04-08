@@ -10,7 +10,7 @@
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "us.anthropic.claude-sonnet-4-6",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "us.anthropic.claude-haiku-4-5-20251001-v1:0"
   },
-  "model": "opus",
+  "model": "opusplan",
   "modelOverrides": {
     "claude-sonnet-4-6": "us.anthropic.claude-sonnet-4-6",
     "claude-opus-4-6": "us.anthropic.claude-opus-4-6-v1",
@@ -19,5 +19,14 @@
     "claude-sonnet-4-5-20250929": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "claude-sonnet-4-20250514": "us.anthropic.claude-sonnet-4-20250514-v1:0",
     "claude-3-haiku-20240307": "us.anthropic.claude-3-haiku-20240307-v1:0"
-  }
+  },
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "atlassian@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "autoUpdatesChannel": "stable"
 }
