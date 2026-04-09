@@ -28,5 +28,6 @@
     "atlassian@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true
   },
+  "extraKnownMarketplaces": {},
   "autoUpdatesChannel": "stable"
 }
