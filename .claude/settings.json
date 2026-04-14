@@ -45,7 +45,8 @@
       "source": {
         "source": "git",
         "url": "https://github.huit.harvard.edu/jic012/my-claude-plugins.git"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "autoUpdatesChannel": "stable"
