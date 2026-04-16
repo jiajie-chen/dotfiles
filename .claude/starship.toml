@@ -4,14 +4,14 @@
 
 ##region Format Minimal
 format = """
-[┆](fg:sep-primary)\
+[](fg:sep-primary)\
 ( [${env_var.CLAUDE_MODEL}](bold fg:model-primary))\
-( [](fg:sep-primary)[( ${env_var.CLAUDE_STYLE})](fg:style-primary))\
-( [](fg:sep-primary)[( ${env_var.CLAUDE_CONTEXT})( ${env_var.CLAUDE_COST})](fg:context-primary))\
-[ ](fg:sep-primary)\
-( [](fg:sep-primary)[ $directory](bold fg:dir-primary))\
-( [](fg:sep-primary)[( $git_branch)( $git_commit)( $git_status)( $git_state)](fg:git-primary))\
-[ ┆](fg:sep-primary)
+( [](fg:sep-primary)[( ${env_var.CLAUDE_STYLE})](fg:style-primary))\
+( [](fg:sep-primary)[( ${env_var.CLAUDE_CONTEXT})( ${env_var.CLAUDE_COST})](fg:context-primary))\
+[ ┆](fg:sep-primary)\
+( [$directory](bold fg:dir-primary))\
+( [](fg:sep-primary)[( $git_branch)( $git_commit)( $git_status)( $git_state)](fg:git-primary))\
+[ ](fg:sep-primary)
 """
 ##endregion
 
@@ -186,7 +186,7 @@ renamed = " "
 deleted = " "
 modified = " "
 up_to_date = " "
-format = '(┆$all_status$ahead_behind)'
+format = '(┆$all_status$ahead_behind )'
 
 [git_state]
 disabled = false

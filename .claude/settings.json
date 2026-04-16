@@ -6,8 +6,8 @@
     "CLAUDE_CODE_SKIP_BEDROCK_AUTH": "1",
     "CLAUDE_CODE_USE_BEDROCK": "1",
     "AWS_REGION": "us-east-1",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "us.anthropic.claude-opus-4-6-v1",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "us.anthropic.claude-sonnet-4-6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "us.anthropic.claude-opus-4-6-v1[1m]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "us.anthropic.claude-sonnet-4-6[1m]",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "us.anthropic.claude-haiku-4-5-20251001-v1:0"
   },
   "permissions": {
@@ -15,6 +15,7 @@
   },
   "model": "opusplan",
   "modelOverrides": {
+    "claude-opus-4-7": "us.anthropic.claude-opus-4-7",
     "claude-sonnet-4-6": "us.anthropic.claude-sonnet-4-6",
     "claude-opus-4-6": "us.anthropic.claude-opus-4-6-v1",
     "claude-opus-4-5-20251101": "us.anthropic.claude-opus-4-5-20251101-v1:0",
