@@ -31,7 +31,8 @@
     "superpowers@claude-plugins-official": true,
     "lts-skills@harvard-lts": true,
     "github-mcp@harvard-jic012": true,
-    "macos-notifications@harvard-jic012": true
+    "macos-notifications@harvard-jic012": true,
+    "atlassian-mcp@harvard-jic012": true
   },
   "extraKnownMarketplaces": {
     "harvard-lts": {
@@ -49,5 +50,10 @@
       "autoUpdate": true
     }
   },
-  "autoUpdatesChannel": "stable"
+  "autoUpdatesChannel": "stable",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.local/bin/starship-claude --no-progress",
+    "padding": 0
+  }
 }

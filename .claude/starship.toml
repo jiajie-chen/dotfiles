@@ -5,21 +5,19 @@
 ##region Format Minimal
 format = """
 [┆](fg:sep-primary)\
-( [$status](bold fg:alert-primary))\
-( [](fg:sep-primary)[ $os( $username)](fg:sys-primary))\
-( [](fg:sep-primary)[ $directory](bold fg:dir-primary))\
-( [](fg:sep-primary)[( $git_branch)( $git_commit)( $git_status)( $git_state)](fg:git-primary))\
-( [](fg:sep-primary)[( $python)( $nodejs)( $rust)](fg:lang-primary))\
-( [](fg:sep-primary)[( $docker_context)( $kubernetes)](fg:docker-primary))\
+( [${env_var.CLAUDE_MODEL}](bold fg:model-primary))\
+( [](fg:sep-primary)[( ${env_var.CLAUDE_STYLE})](fg:style-primary))\
+( [](fg:sep-primary)[( ${env_var.CLAUDE_CONTEXT})( ${env_var.CLAUDE_COST})](fg:context-primary))\
 [ ](fg:sep-primary)\
-\n$character \
+( [](fg:sep-primary)[ $directory](bold fg:dir-primary))\
+( [](fg:sep-primary)[( $git_branch)( $git_commit)( $git_status)( $git_state)](fg:git-primary))\
+[ ┆](fg:sep-primary)
 """
 ##endregion
 
-# continuation_prompt = '$fill'
 command_timeout = 1500
-# Blank line at the start of the prompt
-add_newline = true
+# No newline in Claude
+add_newline = false
 
 ##endregion
 ##region Palettes
@@ -28,8 +26,11 @@ palette = 'dracula'
 [palettes.dracula]
 sep-primary = 'bright-black'
 sys-primary = '#FF79C6'
+model-primary = '#FF79C6'
 dir-primary = '#BD93F9'
+style-primary = '#BD93F9'
 git-primary = '#FFB86C'
+context-primary = '#FFB86C'
 lang-primary = '#8BE9FD'
 lang-secondary = '#282A36'
 docker-primary = '#8BE9FD'
@@ -78,7 +79,7 @@ time_format = "%R" # Hour:Minute Format
 format = ' $time'
 
 [status]
-disabled = false
+disabled = true
 symbol = "󰴔 $int"
 success_symbol = "󰣐"
 map_symbol = false
@@ -100,7 +101,7 @@ style_root = "fg:alert-primary bg:sys-primary"
 format = '[$user]($style)'
 
 [os]
-disabled = false
+disabled = true
 format = "$symbol( $version)"
 [os.symbols]
 Alpine = ""
@@ -244,7 +245,7 @@ version_format = '${major}.${minor}'
 format = '$symbol( $version)'
 
 [nodejs]
-disabled = false
+disabled = true
 symbol = ""
 version_format = '${major}.${minor}'
 format = '$symbol( $version)'
@@ -268,7 +269,7 @@ version_format = '${major}.${minor}'
 format = '$symbol( $version)'
 
 [python]
-disabled = false
+disabled = true
 symbol = "󰌠"
 version_format = '${major}.${minor}'
 format = '$symbol( $version)(/$virtualenv)'
@@ -293,5 +294,33 @@ format = '$symbol $context( $starship-namespace)'
 #     "docker-compose.yml", "docker-compose.yaml", "Dockerfile",
 #     "skaffold.yaml", "skaffold.yml"
 # ]
+
+##endregion
+##region Claude
+## Uses environment variables extracted in `~/.local/bin/claude-starship
+
+[env_var.CLAUDE_MODEL]
+disabled = false
+symbol = "󱚦 "
+variable = "CLAUDE_MODEL_DISPLAY_NAME"
+format = "$symbol( $env_value)"
+
+[env_var.CLAUDE_CONTEXT]
+disabled = false
+symbol = "󱇛 "
+variable = "CLAUDE_PERCENT_RAW"
+format = "$symbol( $env_value%)"
+
+[env_var.CLAUDE_COST]
+disabled = false
+symbol = ""
+variable = "CLAUDE_COST_RAW"
+format = "$symbol( $env_value)"
+
+[env_var.CLAUDE_STYLE]
+disabled = false
+symbol = ""
+variable = "CLAUDE_OUTPUT_STYLE"
+format = "$symbol( $env_value)"
 
 ##endregion
