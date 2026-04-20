@@ -56,7 +56,7 @@
 	# Git prune local branches of merged PRs
 	# From: https://stackoverflow.com/a/47939403
 	prune-delete = "!f() { git fetch --prune && git branch --delete $(git for-each-ref --format '%(if:equals=gone)%(upstream:track,nobracket)%(then)%(refname:short)%(end)' refs/heads/); }; f"
-	prune-force-delete = "!f() { git fetch --prune && git branch -D $(git for-each-ref --format '%(if:equals=gone)%(upstream:track,nobracket)%(then)%(refname:short)%(end)' refs/heads/); }; f"
+	force-prune-delete = "!f() { git fetch --prune && git branch -D $(git for-each-ref --format '%(if:equals=gone)%(upstream:track,nobracket)%(then)%(refname:short)%(end)' refs/heads/); }; f"
 	# Stack-style branch/rebase management
 	# TODO: get default branch programmatically
 	restack = rebase --onto=main
