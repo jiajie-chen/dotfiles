@@ -1,10 +1,10 @@
 ## VSCode
 .vscode/*
-#!.vscode/settings.json
+!.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
-#!.vscode/extensions.json
-#!.vscode/*.code-snippets
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
 # Local History for Visual Studio Code
 .history/
@@ -43,4 +43,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+## Claude Code
 **/.claude/settings.local.json
+
+## Mise
+.mise.local.toml
+mise.local.toml

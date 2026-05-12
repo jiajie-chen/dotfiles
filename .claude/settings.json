@@ -2,11 +2,12 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "apiKeyHelper": "security find-generic-password -s ANTHROPIC_API_KEY -w",
   "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50",
     "ANTHROPIC_BEDROCK_BASE_URL": "https://go.apis.huit.harvard.edu/ais-bedrock-llm/v2",
     "CLAUDE_CODE_SKIP_BEDROCK_AUTH": "1",
     "CLAUDE_CODE_USE_BEDROCK": "1",
     "AWS_REGION": "us-east-1",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "us.anthropic.claude-opus-4-6-v1[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "us.anthropic.claude-opus-4-7[1m]",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "us.anthropic.claude-sonnet-4-6[1m]",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "us.anthropic.claude-haiku-4-5-20251001-v1:0"
   },
@@ -24,6 +25,11 @@
     "claude-sonnet-4-20250514": "us.anthropic.claude-sonnet-4-20250514-v1:0",
     "claude-3-haiku-20240307": "us.anthropic.claude-3-haiku-20240307-v1:0"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.local/bin/starship-claude --no-progress",
+    "padding": 0
+  },
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
@@ -33,7 +39,10 @@
     "lts-skills@harvard-lts": true,
     "github-mcp@harvard-jic012": true,
     "macos-notifications@harvard-jic012": true,
-    "atlassian-mcp@harvard-jic012": true
+    "atlassian-mcp@harvard-jic012": true,
+    "playwright@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "harvard-lts": {
@@ -51,10 +60,6 @@
       "autoUpdate": true
     }
   },
-  "autoUpdatesChannel": "stable",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.local/bin/starship-claude --no-progress",
-    "padding": 0
-  }
+  "showClearContextOnPlanAccept": true,
+  "autoUpdatesChannel": "stable"
 }
